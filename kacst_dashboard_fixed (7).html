@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مبادرة تعريف برامج الدعم والحوافز — KACST</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link id="gfonts-link" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap">
+<style>
+/* ══════════════════════════════════════════════
+   CSS VARIABLES — controlled from settings sheet
+   ══════════════════════════════════════════════ */
+:root{
+  --primary:        #1a3a6b;
+  --secondary:      #0e7c4a;
+  --accent:         #b06f00;
+  --bg:             #f2f4f7;
+  --text:           #374151;
+  --card-radius:    12px;
+  --font:           'Tajawal', system-ui, sans-serif;
+  --shadow:         0 2px 8px rgba(26,58,107,0.06);
+  --border:         #dde4f0;
+  --text-muted:     #6b7a99;
+  --text-light:     #9aaac4;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--primary);direction:rtl;min-height:100vh}
+
+/* ── HEADER ── */
+.header{
+  background:var(--primary);
+  padding:18px 28px 14px;
+  display:flex;align-items:center;gap:18px;
+}
+.kacst-logo-wrap{flex-shrink:0;display:flex;align-items:center;gap:10px}
+.kacst-wordmark{display:flex;flex-direction:column;justify-content:center}
+.kacst-name-ar{font-size:11px;font-weight:700;color:#fff;line-height:1.3;white-space:nowrap}
+.kacst-name-en{font-size:9px;color:rgba(255,255,255,0.55);margin-top:1px;white-space:nowrap;letter-spacing:.02em}
+.hdiv{width:1px;height:42px;background:rgba(255,255,255,0.2);flex-shrink:0;margin:0 6px}
+.htitles{flex:1}
+.h-initiative{font-size:14px;font-weight:700;color:#fff;line-height:1.4}
+.h-dept{font-size:10px;color:rgba(255,255,255,0.6);margin-top:2px}
+.h-meta{font-size:10px;color:rgba(255,255,255,0.4);margin-top:2px}
+
+/* ── UPDATE BUTTON ── */
+.btn-update{
+  background:rgba(255,255,255,0.12);
+  border:1.5px solid rgba(255,255,255,0.25);
+  color:#fff;
+  font-family:var(--font);
+  font-size:11px;font-weight:600;
+  padding:7px 15px;border-radius:8px;
+  cursor:pointer;white-space:nowrap;
+  transition:all .2s;
+  display:flex;align-items:center;gap:6px;
+}
+.btn-update:hover{background:rgba(255,255,255,0.22);border-color:rgba(255,255,255,0.45)}
+.btn-update.loading{opacity:.6;cursor:default}
+.btn-update .spin{display:inline-block;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── MAIN ── */
+.main{max-width:1080px;margin:0 auto;padding:20px 16px}
+
+/* ── KPI ROW (stats) ── */
+.kpis-row{
+  display:flex;align-items:stretch;
+  background:#fff;border-radius:14px;
+  border:1px solid var(--border);
+  overflow:hidden;margin-bottom:20px;
+  box-shadow:var(--shadow);
+}
+.kpi-item{flex:1;text-align:center;padding:18px 8px}
+.kpi-item .n{font-size:34px;font-weight:700;line-height:1;color:var(--primary)}
+.kpi-item .l{font-size:11px;color:var(--text-muted);margin-top:5px;line-height:1.4}
+.ksep{width:1px;background:var(--border);margin:14px 0}
+
+/* ── TABS ── */
+.tabs-bar{
+  display:flex;gap:8px;
+  background:transparent;
+  padding:0;margin-bottom:20px;
+}
+.tab-btn{
+  padding:8px 22px;border-radius:9px;
+  font-family:var(--font);font-size:12px;font-weight:700;
+  cursor:pointer;
+  background:rgba(255,255,255,0.55);
+  border:1.5px solid var(--border);
+  color:var(--text-muted);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  box-shadow:0 1px 4px rgba(26,58,107,0.05);
+  transition:all .18s;
+  letter-spacing:.01em;
+}
+.tab-btn.active{
+  background:#fff;
+  border-color:var(--primary);
+  color:var(--primary);
+  box-shadow:0 2px 10px rgba(26,58,107,0.10);
+}
+.tab-btn:hover:not(.active){
+  background:rgba(255,255,255,0.8);
+  border-color:#c5d0e6;
+  color:var(--primary);
+}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* ── SECTION TITLE ── */
+.sec-hdr{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.sec-hdr .bar{width:4px;height:16px;border-radius:2px;flex-shrink:0}
+.sec-hdr .bar.blue{background:var(--primary)}
+.sec-hdr .bar.green{background:var(--secondary)}
+.sec-hdr .bar.amber{background:var(--accent)}
+.sec-hdr h2{font-size:12px;font-weight:700;color:var(--primary)}
+
+/* ── NABTHA (about text box) ── */
+.nabtha-box{
+  background:#fff;border:1px solid var(--border);border-radius:var(--card-radius);
+  padding:18px 20px;margin-bottom:20px;
+  box-shadow:var(--shadow);
+  font-size:13px;color:var(--text);line-height:1.8;
+}
+.nabtha-box p{margin-bottom:10px}
+.nabtha-box p:last-child{margin-bottom:0}
+
+/* ── OBJECTIVES ── */
+.objectives-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
+.obj-card{
+  background:#fff;border:1px solid var(--border);border-radius:11px;
+  padding:12px 14px;display:flex;align-items:flex-start;gap:10px;
+  box-shadow:0 1px 3px rgba(26,58,107,0.04);
+}
+.obj-num{
+  width:24px;height:24px;border-radius:6px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;color:#fff;
+}
+.obj-num.c1{background:var(--primary)}
+.obj-num.c2{background:var(--secondary)}
+.obj-num.c3{background:#1a6b8a}
+.obj-num.c4{background:#6b4f1a}
+.obj-num.c5{background:#6b1a1a}
+.obj-num.c6{background:#4a1a6b}
+.obj-text{font-size:11px;color:var(--text);line-height:1.5}
+
+/* ── KPI INDICATORS ── */
+.kpi-indicators{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px}
+.kpi-card{
+  background:#fff;border:1px solid var(--border);border-radius:var(--card-radius);
+  padding:13px 14px;display:flex;align-items:center;gap:12px;
+  box-shadow:0 1px 3px rgba(26,58,107,0.04);
+}
+.kpi-badge{
+  font-size:10px;font-weight:700;color:#fff;
+  border-radius:7px;padding:3px 8px;white-space:nowrap;flex-shrink:0;
+}
+.kpi-badge.b1{background:var(--primary)}
+.kpi-badge.b2{background:var(--secondary)}
+.kpi-badge.b3{background:#1a6b8a}
+.kpi-badge.b4{background:#3d308e}
+.kpi-lbl{flex:1;font-size:11px;color:var(--text);line-height:1.5}
+.kpi-vals{display:flex;gap:7px;flex-shrink:0}
+.val-box{text-align:center;border-radius:8px;padding:6px 12px;min-width:62px}
+.val-box .vn{font-size:17px;font-weight:700;line-height:1}
+.val-box .vl{font-size:9px;margin-top:2px;opacity:.7}
+.val-box.current{background:#eef2f9;border:1px solid var(--border)}
+.val-box.current .vn{color:var(--primary)}
+.val-box.current .vl{color:var(--text-muted)}
+.val-box.target-b1{background:#e8f0fa;border:1px solid #c5d5ee}
+.val-box.target-b1 .vn{color:var(--primary)}
+.val-box.target-b1 .vl{color:#5a7aaa}
+.val-box.target-b2{background:#e8f5ee;border:1px solid #b5dec9}
+.val-box.target-b2 .vn{color:var(--secondary)}
+.val-box.target-b2 .vl{color:#3a9e6e}
+.val-box.target-b3{background:#e8f3f8;border:1px solid #b5d5e5}
+.val-box.target-b3 .vn{color:#1a6b8a}
+.val-box.target-b3 .vl{color:#3a8baa}
+.val-box.target-b4{background:#d3d1e693;border:1px solid #d2cfe1}
+.val-box.target-b4 .vn{color:#3d308e}
+.val-box.target-b4 .vl{color:#817bac}
+
+/* ── ENTITIES ── */
+.entities-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.entity-card{
+  background:#fff;border:1.5px solid var(--border);border-radius:var(--card-radius);
+  padding:14px 15px;cursor:pointer;
+  transition:all .18s;position:relative;
+  box-shadow:0 1px 4px rgba(26,58,107,0.04);
+}
+.entity-card:hover{box-shadow:0 4px 16px rgba(26,58,107,0.12);transform:translateY(-1px)}
+.entity-card.active,.entity-card.gov-open{border-color:var(--primary);background:#f0f4fa}
+.entity-card .stripe{position:absolute;right:0;top:0;bottom:0;width:4px;border-radius:0 12px 12px 0}
+.e-type{font-size:9px;color:var(--text-light);margin-bottom:4px;letter-spacing:.04em}
+.e-name{font-size:13px;font-weight:700;color:var(--primary);line-height:1.4}
+.e-badge{
+  font-size:9px;color:#fff;border-radius:20px;padding:2px 8px;
+  position:absolute;top:11px;left:11px;font-weight:600;
+}
+.e-arrow{font-size:11px;color:var(--text-light);position:absolute;bottom:11px;left:11px;transition:transform .2s}
+.entity-card.gov-open .e-arrow{transform:rotate(90deg);color:var(--primary)}
+
+/* stripe & badge colors */
+.gov-style  .stripe{background:var(--primary)} .gov-style  .e-badge{background:var(--primary)}
+.sdb-style  .stripe{background:#0a6640}        .sdb-style  .e-badge{background:#0a6640}
+.uni-style  .stripe{background:#ce932d}        .uni-style  .e-badge{background:#ce932d}
+.np-style   .stripe{background:#1a6b8a}        .np-style   .e-badge{background:#1a6b8a}
+.prv-style  .stripe{background:#8b2727}        .prv-style  .e-badge{background:#8b2727}
+.hlth-style .stripe{background:var(--secondary)}.hlth-style .e-badge{background:var(--secondary)}
+.glb-style  .stripe{background:#4a1a6b}        .glb-style  .e-badge{background:#4a1a6b}
+
+/* ── GOV SUB ── */
+.gov-sub{
+  display:none;grid-column:1/-1;
+  background:#f4f7fb;border:1.5px solid var(--border);
+  border-radius:var(--card-radius);padding:14px;
+}
+.gov-sub.show{display:block}
+.gov-sub-lbl{font-size:11px;font-weight:700;color:var(--primary);margin-bottom:10px}
+.gov-sub-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.sub-btn{
+  background:#fff;border:1.5px solid var(--border);border-radius:10px;
+  padding:10px 12px;cursor:pointer;font-family:var(--font);
+  text-align:right;transition:all .15s;width:100%;
+}
+.sub-btn:hover,.sub-btn.active{background:var(--primary);border-color:var(--primary);color:#fff}
+.sb-name{font-size:11px;font-weight:700;display:block;margin-bottom:2px;color:inherit}
+.sb-sub{font-size:9px;color:var(--text-light);display:block}
+.sub-btn.active .sb-sub,.sub-btn:hover .sb-sub{color:rgba(255,255,255,0.6)}
+
+/* ── PROGRAMS ── */
+.prog-wrap{margin-bottom:24px;display:none}
+.prog-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.prog-hdr-title{font-size:13px;font-weight:700;color:var(--primary)}
+.prog-hdr-count{font-size:11px;color:var(--text-light)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+
+.pc{
+  background:#fff;border:1.5px solid var(--border);border-radius:var(--card-radius);
+  padding:13px 15px;cursor:default;
+  transition:all .15s;position:relative;
+  box-shadow:0 1px 4px rgba(26,58,107,0.04);
+}
+.pc:hover{box-shadow:0 4px 14px rgba(26,58,107,0.1)}
+.pc .pc-stripe{position:absolute;right:0;top:0;bottom:0;width:4px;border-radius:0 12px 12px 0}
+.pc.nw .pc-stripe{background:var(--secondary)}
+.pc.cl .pc-stripe{background:#aaa;opacity:.5}
+.pc:not(.nw):not(.cl) .pc-stripe{background:var(--border)}
+.pc-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:5px}
+.psrc{font-size:10px;color:var(--text-light)}
+.plink{
+  font-size:10px;color:var(--primary);text-decoration:none;
+  background:#eef2f9;padding:2px 8px;border-radius:10px;
+  white-space:nowrap;transition:all .15s;
+}
+.plink:hover{background:var(--primary);color:#fff}
+.pname{font-size:12.5px;font-weight:700;color:var(--primary);margin-bottom:7px;line-height:1.4;cursor:pointer}
+.pname:hover{text-decoration:underline}
+.ptags{display:flex;gap:5px;flex-wrap:wrap}
+.tag{padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600}
+.tf{background:#e8f0fa;color:var(--primary)}
+.tn{background:#f5f5f5;border:1px solid var(--border);color:var(--text-light)}
+.tc{background:#f0f0f0;color:#999}
+.tnw{background:#e8f5ee;color:var(--secondary);border:1px solid #b5dec9}
+
+/* ── DETAIL ── */
+.det{
+  background:#fff;border:2px solid var(--primary);border-radius:14px;
+  padding:18px 20px;margin-bottom:14px;display:none;
+  box-shadow:0 4px 20px rgba(26,58,107,0.1);
+}
+.det.show{display:block}
+.det-title{
+  font-size:14px;font-weight:700;color:var(--primary);
+  margin-bottom:12px;padding-bottom:10px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+}
+.det-link{
+  font-size:11px;color:#fff;background:var(--primary);
+  padding:4px 13px;border-radius:8px;text-decoration:none;white-space:nowrap;
+}
+.det-link:hover{opacity:.85}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.di label{font-size:10px;color:var(--text-light);display:block;margin-bottom:3px;text-transform:uppercase;letter-spacing:.04em}
+.di p{font-size:11.5px;color:var(--primary);line-height:1.6}
+.cbtn{background:var(--primary);color:#fff;border:none;border-radius:8px;padding:6px 16px;font-size:12px;cursor:pointer;font-family:var(--font)}
+
+/* ── LOADING STATE ── */
+.loading-overlay{
+  text-align:center;padding:30px;color:var(--text-muted);font-size:12px;
+}
+.skeleton{
+  background:linear-gradient(90deg,#e8ecf3 25%,#f3f5f9 50%,#e8ecf3 75%);
+  background-size:200% 100%;animation:shimmer 1.4s infinite;
+  border-radius:6px;
+}
+@keyframes shimmer{to{background-position:-200% 0}}
+
+/* ── STATUS BAR ── */
+.status-bar{
+  font-size:10px;color:var(--text-muted);
+  margin-bottom:14px;display:flex;align-items:center;gap:6px;
+}
+.status-dot{
+  width:7px;height:7px;border-radius:50%;background:#ccc;flex-shrink:0;
+}
+.status-dot.live{background:#22c55e}
+.status-dot.fallback{background:#f59e0b}
+.status-dot.error{background:#ef4444}
+
+@media(max-width:700px){
+  .objectives-grid,.entities-grid{grid-template-columns:1fr 1fr}
+  .gov-sub-grid{grid-template-columns:1fr 1fr}
+  .kpi-indicators{grid-template-columns:1fr 1fr}
+  .kpis-row{flex-wrap:wrap}
+  .ksep{display:none}
+  .header{flex-wrap:wrap}
+  .hdiv{display:none}
+  .dgrid{grid-template-columns:1fr}
+  .kpi-card{flex-wrap:wrap}
+  .kpi-vals{margin-top:8px;width:100%}
+  .btn-update{font-size:10px;padding:6px 10px}
+}
+
+/* ── kpi-funding: label above number ── */
+.kpi-item{display:flex;flex-direction:column;align-items:center;justify-content:center}
+.kpi-item.kpi-funding .l{order:1;margin-top:0;margin-bottom:6px}
+.kpi-item.kpi-funding .n{order:2;margin-top:0}
+/* ── API source badge ── */
+.h-api-badge{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:700;
+  letter-spacing:.04em;padding:2px 8px;border-radius:20px;margin-top:3px;opacity:.85}
+.h-api-badge::before{content:'';width:5px;height:5px;border-radius:50%;flex-shrink:0;background:currentColor;opacity:.7}
+.h-api-badge.api-live{color:#6ee7b7;background:rgba(110,231,183,.15)}
+.h-api-badge.api-live::before{background:#6ee7b7}
+.h-api-badge.api-err{color:#fca5a5;background:rgba(252,165,165,.12)}
+.h-api-badge.api-err::before{background:#fca5a5}
+/* ── program search bar ── */
+.prog-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:10px;
+  font-family:var(--font);font-size:13px;color:var(--primary);background:#fff;outline:none;
+  direction:rtl;display:none;margin-bottom:12px;transition:border-color .2s,box-shadow .2s}
+.prog-search.visible{display:block}
+.prog-search:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(26,58,107,.08)}
+.prog-search::placeholder{color:var(--text-light)}
+.prog-empty{grid-column:1/-1;text-align:center;padding:32px 20px;color:var(--text-muted);font-size:12px;line-height:1.8}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<div class="header">
+  <div class="kacst-logo-wrap">
+    <img
+      id="kacst-logo"
+      src="https://i0.wp.com/ksalogo.com/wp-content/uploads/2025/05/KACST-01-1.png?fit=1000%2C1000&ssl=1"
+      alt="KACST"
+      style="height:56px;width:56px;object-fit:contain;flex-shrink:0;filter:brightness(0) invert(1);"
+    />
+    <div class="kacst-wordmark">
+      <div class="kacst-name-ar">مدينة الملك عبدالعزيز للعلوم والتقنية</div>
+      <div class="kacst-name-en">King Abdulaziz City for Science and Technology</div>
+    </div>
+  </div>
+  <div class="hdiv"></div>
+  <div class="htitles">
+    <div class="h-initiative" id="h-initiative">مبادرة تعريف برامج الدعم والحوافز المالية لرواد الأعمال</div>
+    <div class="h-dept" id="h-dept">الإدارة العامة لتمويل الابتكار · <a href="mailto:vfund@kacst.gov.sa" style="color:rgba(255,255,255,0.6);text-decoration:none;">vfund@kacst.gov.sa</a></div>
+    <div class="h-meta" id="h-meta">آخر تحديث: جارٍ التحميل…</div>
+    <div class="h-api-badge" id="h-api-badge"></div>
+  </div>
+  <button class="btn-update" id="btn-update" onclick="refreshAll()">
+    <span id="btn-icon">↻</span>
+    <span id="btn-text">تحديث البيانات</span>
+  </button>
+</div>
+
+<div class="main">
+
+  <!-- ═══ STATS KPI ROW ═══ -->
+  <div class="kpis-row" id="stats-row">
+    <div class="kpi-item"><div class="n" id="stat-n1">22</div><div class="l" id="stat-l1">جهة داعمة</div></div>
+    <div class="ksep"></div>
+    <div class="kpi-item"><div class="n" id="stat-n2">80+</div><div class="l" id="stat-l2">برنامج ومبادرة</div></div>
+    <div class="ksep"></div>
+    <div class="kpi-item kpi-funding"><div class="l" id="stat-l3">تمويل حكومي يصل الى</div><div class="n" id="stat-n3">3M</div></div>
+    <div class="ksep"></div>
+    <div class="kpi-item kpi-funding"><div class="l" id="stat-l4">تمويل خاص يصل الى</div><div class="n" id="stat-n4">150K</div></div>
+  </div>
+
+  <!-- ═══ STATUS BAR ═══ -->
+  <div class="status-bar" id="status-bar">
+    <div class="status-dot" id="status-dot"></div>
+    <span id="status-msg">جارٍ تحميل البيانات من Google Sheets…</span>
+  </div>
+
+  <!-- ═══ TABS BAR ═══ -->
+  <div class="tabs-bar">
+    <button class="tab-btn" id="tab-btn-about"   onclick="switchTab('about')">حول</button>
+    <button class="tab-btn active" id="tab-btn-programs" onclick="switchTab('programs')">البرامج</button>
+  </div>
+
+  <!-- ════════════════════════════════
+       TAB 1 : حول
+       ════════════════════════════════ -->
+  <div class="tab-panel" id="tab-about">
+
+    <!-- نبذة عن المبادرة -->
+    <div class="sec-hdr"><div class="bar blue"></div><h2>نبذة عن المبادرة</h2></div>
+    <div class="nabtha-box" id="nabtha-box">
+      <p>تُعنى هذه المبادرة بحصر وتعريف برامج الدعم والحوافز المالية المتاحة لرواد الأعمال والشركات الناشئة في المملكة العربية السعودية، وتيسير وصولهم إلى هذه الفرص من خلال دليل شامل وموحّد.</p>
+    </div>
+
+    <!-- أهداف المبادرة -->
+    <div class="sec-hdr"><div class="bar blue"></div><h2>أهداف المبادرة</h2></div>
+    <div class="objectives-grid" id="objectives-grid">
+      <div class="obj-card"><div class="obj-num c1">1</div><div class="obj-text">توفير قاعدة بيانات شاملة عن الجهات الداعمة للباحثين عن فرص الدعم</div></div>
+      <div class="obj-card"><div class="obj-num c2">2</div><div class="obj-text">رفع الوعي بفرص الدعم المتاحة لرواد الأعمال والشركات الناشئة</div></div>
+      <div class="obj-card"><div class="obj-num c3">3</div><div class="obj-text">توجيه رواد الأعمال نحو المسارات والبرامج المناسبة لمراحل مشاريعهم</div></div>
+      <div class="obj-card"><div class="obj-num c4">4</div><div class="obj-text">تمكين المبتكرين من الوصول الفعّال إلى مصادر التمويل والدعم</div></div>
+      <div class="obj-card"><div class="obj-num c5">5</div><div class="obj-text">تحقيق نمو مستدام وقابل للتوسع للشركات الناشئة السعودية</div></div>
+      <div class="obj-card"><div class="obj-num c6">6</div><div class="obj-text">رفع فرص نجاح الشركات الناشئة وزيادة حصولها على القبول بالبرامج</div></div>
+    </div>
+
+  </div><!-- /tab-about -->
+
+  <!-- ════════════════════════════════
+       TAB 2 : البرامج
+       ════════════════════════════════ -->
+  <div class="tab-panel active" id="tab-programs">
+
+    <!-- ═══ ENTITIES ═══ -->
+    <div class="sec-hdr"><div class="bar amber"></div><h2>الجهات الداعمة</h2></div>
+    <div class="entities-grid" id="entities-grid">
+
+      <div class="entity-card gov-style" id="gov-card" onclick="toggleGov(this)">
+        <div class="stripe"></div>
+        <div class="e-type">حكومية</div>
+        <div class="e-name">الجهات الحكومية</div>
+        <span class="e-badge" id="gov-badge">9 جهات</span>
+        <span class="e-arrow">←</span>
+      </div>
+
+      <div class="entity-card uni-style" onclick="selectCat('universities','الجامعات',this)">
+        <div class="stripe"></div>
+        <div class="e-type">أكاديمية</div>
+        <div class="e-name">الجامعات</div>
+        <span class="e-badge" id="badge-universities">6 برامج</span>
+        <span class="e-arrow">←</span>
+      </div>
+
+      <div class="entity-card np-style" onclick="selectCat('nonprofit','المؤسسات غير الربحية',this)">
+        <div class="stripe"></div>
+        <div class="e-type">مجتمعية</div>
+        <div class="e-name">المؤسسات غير الربحية</div>
+        <span class="e-badge" id="badge-nonprofit">4 برامج</span>
+        <span class="e-arrow">←</span>
+      </div>
+
+      <!-- GOV SUB PANEL -->
+      <div class="gov-sub" id="gov-sub">
+        <div class="gov-sub-lbl">اختر الجهة الحكومية</div>
+        <div class="gov-sub-grid" id="gov-sub-grid">
+          <button class="sub-btn" onclick="selectGov('ntdp','NTDP',this)"><span class="sb-name">NTDP</span><span class="sb-sub">البرنامج الوطني لتنمية التقنية</span></button>
+          <button class="sub-btn" onclick="selectGov('industry','وزارة الصناعة',this)"><span class="sb-name">وزارة الصناعة</span><span class="sb-sub">وزارة الصناعة والثروة المعدنية</span></button>
+          <button class="sub-btn" onclick="selectGov('smebank','بنك المنشآت',this)"><span class="sb-name">بنك المنشآت</span><span class="sb-sub">بنك المنشآت الصغيرة والمتوسطة</span></button>
+          <button class="sub-btn" onclick="selectGov('municipalities','وزارة البلديات',this)"><span class="sb-name">وزارة البلديات</span><span class="sb-sub">وزارة البلديات والإسكان</span></button>
+          <button class="sub-btn" onclick="selectGov('modon','مدن',this)"><span class="sb-name">مدن</span><span class="sb-sub">الهيئة السعودية للمدن الصناعية</span></button>
+          <button class="sub-btn" onclick="selectGov('monshaat','منشآت',this)"><span class="sb-name">منشآت</span><span class="sb-sub">الهيئة العامة للمنشآت الصغيرة</span></button>
+          <button class="sub-btn" onclick="selectGov('exports','هيئة الصادرات',this)"><span class="sb-name">هيئة الصادرات</span><span class="sb-sub">هيئة تنمية الصادرات السعودية</span></button>
+          <button class="sub-btn" onclick="selectGov('tourism','صندوق السياحة',this)"><span class="sb-name">صندوق السياحة</span><span class="sb-sub">صندوق التنمية السياحي</span></button>
+          <button class="sub-btn" onclick="selectGov('sdb','بنك التنمية الاجتماعي',this)"><span class="sb-name">بنك التنمية الاجتماعي</span><span class="sb-sub">SDB</span></button>
+        </div>
+      </div>
+
+      <div class="entity-card prv-style" onclick="selectCat('private','القطاع الخاص',this)">
+        <div class="stripe"></div>
+        <div class="e-type">خاص</div>
+        <div class="e-name">القطاع الخاص</div>
+        <span class="e-badge" id="badge-private">11 برنامج</span>
+        <span class="e-arrow">←</span>
+      </div>
+
+      <div class="entity-card hlth-style" onclick="selectCat('health','القطاع الصحي',this)">
+        <div class="stripe"></div>
+        <div class="e-type">صحي</div>
+        <div class="e-name">القطاع الصحي</div>
+        <span class="e-badge" id="badge-health">6 برامج</span>
+        <span class="e-arrow">←</span>
+      </div>
+
+      <div class="entity-card glb-style" onclick="selectCat('global','البرامج العالمية',this)">
+        <div class="stripe"></div>
+        <div class="e-type">دولي</div>
+        <div class="e-name">البرامج العالمية</div>
+        <span class="e-badge" id="badge-global">6 برامج</span>
+        <span class="e-arrow">←</span>
+      </div>
+
+    </div><!-- /entities-grid -->
+
+    <!-- ═══ PROGRAMS OUTPUT ═══ -->
+    <div class="prog-wrap" id="prog-wrap">
+      <div class="prog-hdr">
+        <div class="prog-hdr-title" id="prog-title"></div>
+        <div class="prog-hdr-count" id="prog-count"></div>
+      </div>
+      <input type="text" id="prog-search" class="prog-search" placeholder="ابحث في البرامج…" autocomplete="off" dir="rtl" oninput="filterProgs()" />
+      <div class="det" id="det">
+        <div class="det-title">
+          <span id="d-name"></span>
+          <a class="det-link" id="d-link" href="#" target="_blank" rel="noopener">زيارة الموقع ↗</a>
+        </div>
+        <div class="dgrid">
+          <div class="di"><label>الجهة</label><p id="d-src"></p></div>
+          <div class="di"><label>الفئة المستهدفة</label><p id="d-tgt"></p></div>
+          <div class="di"><label>الدعم المالي</label><p id="d-fin"></p></div>
+          <div class="di"><label>الخدمات المقدمة</label><p id="d-svc"></p></div>
+        </div>
+        <button class="cbtn" onclick="closeDet()">إغلاق</button>
+      </div>
+      <div class="pgrid" id="progs"></div>
+    </div>
+
+  </div><!-- /tab-programs -->
+
+</div><!-- /main -->
+
+
+
+<script>
+/* ================================================================
+   KACST Dashboard v17
+   Single data source: Apps Script echo URL
+   Tabs: programs | about | settings | kips
+   ================================================================ */
+
+// ─── CONFIG ───────────────────────────────────────────────────────
+const SHEET_ID = '1huk2-FwdmBYojO2oLEoWFtkI-GXkZiw1fHjwlOSSgok';
+const API_URL = 'https://script.google.com/macros/s/AKfycbzGhNDXkGchQSgUs3HbDpH_tBUXOm_TMJ7kMrwGuAdtjX8_Me6pAkYUtu0-GeCs_u643Q/exec';
+
+// ─── STATE ────────────────────────────────────────────────────────
+let PROGRAMS = [];
+let govOpen  = false;
+
+// ─── FALLBACK DATA ────────────────────────────────────────────────
+const P_FALLBACK = [
+  {id:1,cat:'ntdp',src:'NTDP',n:'تمكين رواد الأعمال في مجال التقنية (Boost)',fin:'مكافأة 20,000 ريال بعد 6 أشهر + 36,000 ريال بعد 12 شهراً',t:'رواد الأعمال السعوديون في شركات تقنية ناشئة',svc:'ورش عمل تفاعلية، ربط بخبراء فنيين',url:'https://ntdp.gov.sa/tamkeen',f:true,nw:false,cl:false},
+  {id:2,cat:'ntdp',src:'NTDP',n:'دعم الشركات التقنية الصغيرة والمتوسطة (Tech Crew)',fin:'دعم رواتب 18 شهراً — حتى 5 موظفين',t:'شركات التقنية الصغيرة والمتوسطة في السعودية',svc:'دعم تغطية رواتب الكفاءات التقنية الوطنية',url:'https://ntdp.gov.sa/techcrew',f:true,nw:false,cl:true},
+  {id:3,cat:'ntdp',src:'NTDP + KAUST',n:'تسريع الابتكار في التقنيات العميقة (Next Era)',fin:'دعم حتى 70% من تكاليف المشروع',t:'شركات ناشئة في التقنيات العميقة: AI، IoT',svc:'برامج تدريبية وتوجيهية',url:'https://ntdp.gov.sa/nextera',f:true,nw:false,cl:true},
+  {id:4,cat:'ntdp',src:'NTDP',n:'النموذج الأولي القابل للتطبيق (MVPlab)',fin:'حوافز مالية 150,000 ريال على 4 دفعات',t:'رواد أعمال أكملوا مرحلة MVP',svc:'استشارات قانونية وإدارية، مساحات عمل',url:'https://ntdp.gov.sa/mvplab',f:true,nw:false,cl:true},
+  {id:5,cat:'ntdp',src:'NTDP',n:'الحوسبة السحابية والـ GPU (Transform+)',fin:'متناهية: 70% بحد 300K | صغيرة: 60% بحد 500K ريال',t:'شركات ناشئة تسعى لتبني الحوسبة السحابية',svc:'تمكين من موارد GPU/HPC لدعم تطبيقات الذكاء الاصطناعي',url:'https://ntdp.gov.sa/transform',f:true,nw:false,cl:true},
+  {id:6,cat:'ntdp',src:'NTDP',n:'تمكين الشركات التقنية المحلية (Connect)',fin:'دعم 50% من تكلفة PoC بحد أقصى 740,000 ريال',t:'الشركات التقنية المحلية الصغيرة والمتوسطة',svc:'فرص تعاون بين الجهات الكبيرة والشركات الصغيرة',url:'https://ntdp.gov.sa/connect',f:true,nw:false,cl:true},
+  {id:7,cat:'ntdp',src:'NTDP',n:'تمكين الابتكار والريادة في الذكاء الاصطناعي (AIM)',fin:'دعم رواتب: متناهية 2 موظف، صغيرة 3، متوسطة 5',t:'الباحثون والمواهب التقنية والشركات الناشئة في AI',svc:'بنية تحتية R&D، تنمية المواهب',url:'https://ntdp.gov.sa/aim',f:true,nw:false,cl:true},
+  {id:8,cat:'ntdp',src:'NTDP + STV',n:'تمويل مبتكر للشركات الناشئة التقنية (STV)',fin:'تمويل عبر صندوق STV لمدة تصل إلى 5 سنوات',t:'الشركات الناشئة في مرحلة Series A أو أعلى',svc:'استشارات مالية وإدارية، دعم التوسع للأسواق الجديدة',url:'https://ntdp.gov.sa/venture-dept',f:true,nw:false,cl:false},
+  {id:9,cat:'ntdp',src:'NTDP + بنك التنمية الاجتماعية',n:'حلول تمويلية (LendTech)',fin:'قروض ميسرة: متناهية حتى 2M | صغيرة حتى 5M ريال',t:'شركات تقنية مسجلة في السعودية، عمر 6 أشهر+',svc:'تسهيلات الوصول لبرامج التمويل الحكومي',url:'https://ntdp.gov.sa/lendtech',f:true,nw:false,cl:false},
+  {id:10,cat:'ntdp',src:'NTDP (كفالة)',n:'تمكين نمو التكنولوجيا من خلال ضمان التمويل',fin:'ضمان يغطي حتى 90% — من 100K حتى 15M ريال',t:'الشركات التقنية متناهية الصغر والصغيرة والمتوسطة',svc:'استشارات، تسهيلات للوصول للتمويل',url:'https://ntdp.gov.sa/loan-guarantee',f:true,nw:false,cl:false},
+  {id:11,cat:'ntdp',src:'NTDP',n:'برنامج Saudi Unicorns',fin:'ربط بصناديق استثمارية وفرص تمويل',t:'الشركات التقنية ذات النمو السريع',svc:'إرشاد من خبراء عالميين، تنمية مهارات قيادية',url:'https://ntdp.gov.sa/saudi-unicorn',f:true,nw:true,cl:false},
+  {id:12,cat:'ntdp',src:'NTDP',n:'مسرّعة Attliq (أطلق)',fin:'تمويل استثماري تصل إلى 375,000 ريال',t:'رواد الأعمال في مراحل مبكرة',svc:'تدريب متعدد المراحل: Hackathon + تسريع مكثف + Demo Day',url:'https://www.attliq.com/',f:true,nw:true,cl:false},
+  {id:13,cat:'industry',src:'وزارة الصناعة والثروة المعدنية',n:'مبادرة حاضنات ومسرعات الأعمال الصناعية (نُمو)',fin:'دعم مالي اختياري للشركات الصناعية الناشئة',t:'رواد الأعمال والشركات الناشئة في القطاع الصناعي',svc:'إرشاد من خبراء الصناعة، تدريب، ربط بمستثمرين',url:'https://www.mim.gov.sa/',f:true,nw:false,cl:false},
+  {id:14,cat:'industry',src:'وزارة الصناعة والثروة المعدنية',n:'حاضنة الاستكشاف التعديني (نُثري)',fin:'دعم مالي لأنشطة الاستكشاف',t:'شركات تعدين ناشئة سعودية',svc:'تحليل بيانات جيولوجية، دعم فني لتحليل العينات',url:'https://www.mim.gov.sa/',f:true,nw:false,cl:false},
+  {id:15,cat:'industry',src:'وزارة الصناعة / الصندوق الصناعي',n:'مبادرة المصانع الواعدة — التمويل الميسر',fin:'تمويل حتى 50% من تكلفة المشروع + سماح 24 شهراً',t:'رواد الأعمال الخريجون من حاضنات صناعية',svc:'تسهيل إجراءات دخول القطاع الصناعي',url:'https://www.sidf.gov.sa/',f:true,nw:false,cl:false},
+  {id:20,cat:'smebank',src:'بنك المنشآت الصغيرة والمتوسطة',n:'برنامج التمويل بالوكالة',fin:'تمويلات تشغيلية وتوسيعية مرنة',t:'المنشآت الصغيرة والمتوسطة، الشركات الناشئة',svc:'إجراءات أبسط وأسرع من التمويل البنكي التقليدي',url:'https://smebank.gov.sa/',f:true,nw:true,cl:false},
+  {id:21,cat:'smebank',src:'بنك المنشآت الصغيرة والمتوسطة',n:'برنامج شركات التمويل (NBFI)',fin:'تمويلات قصيرة ومتوسطة الأجل',t:'المنشآت الصغيرة والمتوسطة ومتناهية الصغر',svc:'بدائل تمويل سريعة لدعم رأس المال العامل',url:'https://smebank.gov.sa/',f:true,nw:true,cl:false},
+  {id:22,cat:'municipalities',src:'وزارة البلديات والإسكان',n:'مبادرة البناء الحديث',fin:'تمويل مزودي تقنيات البناء الحديث',t:'مزودو أساليب البناء الحديث',svc:'تأهيل مزودين، تدريب وورش عمل هندسية',url:'https://mc.momah.gov.sa/',f:true,nw:false,cl:false},
+  {id:23,cat:'modon',src:'مدن + الصندوق الصناعي السعودي',n:'مصنع وقرض صناعي / أرض وقرض صناعي',fin:'تمويل يصل لـ 75% من تكاليف المشروع',t:'المستثمرون في مشاريع صناعية في المملكة',svc:'تخصيص مصنع جاهز أو أرض صناعية',url:'https://modon.gov.sa/',f:true,nw:false,cl:false},
+  {id:24,cat:'monshaat',src:'منشآت',n:'جدير — خدمة التأهيل المسبق',fin:'خصومات تصل لـ 25% على رسوم التمويل',t:'المنشآت متناهية الصغر والصغيرة والمتوسطة',svc:'شهادة تأهيل إلكترونية معتمدة',url:'https://www.monshaat.gov.sa/',f:true,nw:false,cl:false},
+  {id:25,cat:'monshaat',src:'منشآت',n:'برنامج دعم المنشآت (مراكز الدعم)',fin:'لا تمويل مباشر — يسهّل الوصول للجهات التمويلية',t:'رواد الأعمال، أصحاب المنشآت الصغيرة والمتوسطة',svc:'استشارات متخصصة، إرشاد، شبكات أعمال',url:'https://www.monshaat.gov.sa/',f:false,nw:false,cl:false},
+  {id:26,cat:'monshaat',src:'منشآت',n:'مسرعات أعمال المشاريع الناشئة الجامعية',fin:'منح مالية للمشاريع الناشئة المشاركة',t:'طلاب السنتين الأخيرتين وخريجو الجامعات',svc:'ورش عمل، إرشاد، مساحات عمل',url:'https://www.monshaat.gov.sa/',f:true,nw:false,cl:false},
+  {id:33,cat:'sdb',src:'بنك التنمية الاجتماعية',n:'تمويل التميز',fin:'تمويل حتى 4M ريال، سماح سنتين، مدة تمويل 8 سنوات',t:'المنشآت الصغيرة والمتوسطة في قطاعات مستهدفة',svc:'تمويل توسع ورأس مال عامل',url:'https://www.sdb.gov.sa/',f:true,nw:false,cl:false},
+  {id:34,cat:'exports',src:'هيئة تنمية الصادرات السعودية',n:'نظرة عامة على حوافز الصادرات',fin:'منظومة حوافز تصديرية متوافقة مع لوائح WTO',t:'منشآت مسجلة تمارس نشاطاً تصديرياً',svc:'تشمل جميع الحوافز — الموافقة المسبقة مطلوبة',url:'https://www.saudiexports.gov.sa/',f:true,nw:false,cl:false},
+  {id:44,cat:'tourism',src:'صندوق التنمية السياحي',n:'برنامج شركات التمويل السياحي',fin:'حتى 15,000,000 ريال عبر شركات تمويل مرخصة',t:'المنشآت السياحية متناهية الصغر والصغيرة والمتوسطة',svc:'حلول تمويل مرنة بأسعار تنافسية',url:'https://www.tdf.gov.sa/',f:true,nw:false,cl:false},
+  {id:49,cat:'universities',src:'جامعة الملك سعود',n:'مركز حاضنات ومسرعات الأعمال (خطى)',fin:'استشارات مالية وإدارية ودراسات جدوى',t:'رواد الأعمال من طلاب جامعة الملك سعود',svc:'مكاتب مجهزة، دعم تقني وذكاء اصطناعي',url:'https://bi.ksu.edu.sa/',f:false,nw:false,cl:false},
+  {id:50,cat:'universities',src:'KAUST + SABB',n:'مسرعة تقدم (Taqadam)',fin:'دعم غير مسترد حتى 40,000 دولار أمريكي',t:'رواد الأعمال وأصحاب الشركات الناشئة',svc:'إرشاد فردي، ورش عمل، شبكات مستثمرين — 6 أشهر',url:'https://taqadam.kaust.edu.sa/',f:true,nw:false,cl:false},
+  {id:51,cat:'universities',src:'KAUST',n:'برنامج ScaleX (Soft-Landing عالمي)',fin:'يغطي تكاليف السفر والإقامة + ربط بمستثمرين',t:'شركات ناشئة تقنية دولية Series B+ للسوق السعودي',svc:'8 أشهر — ورش حضورية وافتراضية',url:'https://scalex.kaust.edu.sa/',f:false,nw:false,cl:false},
+  {id:52,cat:'universities',src:'KFUPM — مركز DTV',n:'Venture Building (KFUPM)',fin:'تمويل يصل لـ 200,000 ريال سعودي',t:'أعضاء هيئة تدريس وطلاب وباحثو KFUPM',svc:'تطوير مشترك للمنتج، استراتيجية GTM',url:'https://dtv.sa/programs/venture-building',f:true,nw:true,cl:false},
+  {id:55,cat:'nonprofit',src:'MIT Enterprise Forum KSA',n:'مسابقة StartSmart Saudi',fin:'جوائز نقدية إجمالية 355,000 ريال',t:'رواد الأعمال والشركات الناشئة',svc:'تدريب من خبراء، إرشاد، تواصل مع مستثمرين',url:'https://www.startsmartsaudi.com/ar',f:true,nw:false,cl:false},
+  {id:56,cat:'nonprofit',src:'صندوق الأمير سلطان التنموي',n:'مركز بيادر',fin:'دعم مالي مستمر للمشاريع المتميزة',t:'رواد الأعمال السعوديون في القطاعات التقنية',svc:'احتضان ودعم تسويقي واستشاري',url:'https://psdf.org.sa/',f:true,nw:false,cl:false},
+  {id:57,cat:'nonprofit',src:'مسك',n:'مسرعة مسك (12 أسبوع)',fin:'لا تطلب حصة ملكية — Demo Day أمام مستثمرين',t:'الشركات التقنية الناشئة في مراحلها المبكرة',svc:'تدريب في التطوير والتسويق وجمع التمويل',url:'https://hub.misk.org.sa/ar/programs/entrepreneurship/misk-accelerator/',f:false,nw:false,cl:false},
+  {id:58,cat:'nonprofit',src:'Community Jameel',n:'Jameel Deeptech Initiative 2025',fin:'جوائز مالية تصل لـ 2,250,000 ريال',t:'الفرق البحثية ورواد الأعمال في العلوم والهندسة',svc:'تدريب متخصص، دعم تقني وتجاري',url:'https://deeptech.startsmartsaudi.com/',f:true,nw:true,cl:false},
+  {id:59,cat:'private',src:'سابك',n:'مبادرة نساند',fin:'كفالة قروض 80-95% (موافقة 7 أيام)',t:'المستثمرون في قطاع الصناعة المرتبطة بسلاسل قيمة سابك',svc:'بوابة الفرص، تطوير قدرات، دعم شامل',url:'https://www.sabic.com/ar/nusaned',f:true,nw:false,cl:false},
+  {id:60,cat:'private',src:'أرامكو السعودية',n:'واعد فنتشرز',fin:'استثمار رأسمالي حتى 20M دولار/شركة',t:'الشركات التقنية الناشئة في المملكة',svc:'احتضان 12 شهراً، دعم ما بعد الاستثمار',url:'https://www.waed.net/',f:true,nw:false,cl:false},
+  {id:61,cat:'private',src:'مجموعة STC',n:'InspireU',fin:'منحة غير مستردة حتى 100,000 ريال',t:'رواد الأعمال والشركات الناشئة في مرحلة Pre-Seed/Seed',svc:'مساحات عمل 24/7، تدريب من خبراء سيليكون فالي',url:'https://www.stc.com/content/stcgroupwebsite/sa/en/inspire-u/apply-now.html',f:true,nw:false,cl:false},
+  {id:63,cat:'private',src:'فلك (Falak Investment Hub)',n:'مسرّعة فلك (Falak)',fin:'استثمار يصل لـ 5,000,000 ريال في 10 شركات/دورة',t:'الشركات الناشئة التقنية الجاهزة للنمو',svc:'4 أشهر — إرشاد مكثف، ورش عمل، ربط بملائكيين',url:'https://flagship.falak.sa/',f:true,nw:false,cl:false},
+  {id:65,cat:'private',src:'CyberME Venture Studio',n:'استوديو بناء الشركات الناشئة (CyberME)',fin:'شراكة تأسيسية + تمويل متدرج بحسب مراحل النمو',t:'أصحاب أفكار في الأمن السيبراني، FinTech، AI',svc:'بناء المنتج، ملاءمة السوق، خبرات صناعية',url:'https://www.cyberme.studio/',f:true,nw:true,cl:false},
+  {id:66,cat:'private',src:'Qualcomm + أرامكو + STIA',n:'صمم في السعودية بالذكاء الاصطناعي (DISAI)',fin:'منح مشاركة + تعويضات محتملة لتكاليف براءات الاختراع',t:'الشركات الناشئة السعودية في AI وIoT والاتصالات',svc:'إرشاد تقني وتجاري من خبراء Qualcomm وأرامكو',url:'https://www.qualcomm.com/company/locations/saudi-arabia/design-in-saudi-arabia',f:true,nw:true,cl:false},
+  {id:70,cat:'health',src:'KAIMRC',n:'واحة التقنية الحيوية الطبية (KAIMRC)',fin:'تمويل أنشطة التطوير لمدة 12-24 شهراً',t:'الباحثون التابعون لـ KAIMRC مع ملكية فكرية مسجلة',svc:'دعم تقني، توجيه استراتيجي، استشارات IP',url:'https://kaimrc.med.sa/',f:true,nw:false,cl:false},
+  {id:71,cat:'health',src:'Saudi Biotechnology Accelerator',n:'Biotechnology Venture Readiness Program 2025',fin:'تجهيز المشروع للاستثمار وربط بمستثمرين Biotech',t:'المبتكرون في Biotech والأدوية والأجهزة الطبية',svc:'9 أسابيع هجين، 11 جلسة إرشاد فردي',url:'https://saudi-accelerator.com/',f:false,nw:false,cl:false},
+  {id:72,cat:'health',src:'British Council',n:'UK-KSA Research Collaborations Grant',fin:'تمويل يصل لـ £80,000 لمدة سنتين',t:'الجامعات ومراكز الأبحاث — فريق من UK وفريق من KSA',svc:'دعم تأسيس التعاون البحثي الدولي',url:'https://myresearchconnect.com/',f:true,nw:true,cl:false},
+  {id:76,cat:'global',src:'HKSTP هونغ كونغ',n:'برنامج الابتكار في هونغ كونغ (HKSTP)',fin:'منحة 100,000 دولار هونغ كونغي',t:'الشركات الناشئة الراغبة في التوسع بمنطقة آسيا',svc:'ربط بشركاء محليين، وصول لمستثمرين',url:'https://www.hkstp.org/',f:true,nw:false,cl:false},
+  {id:79,cat:'global',src:'TikTok + Blossom Accelerator',n:'برنامج تمكين SME',fin:'تمويل 200,000 دولار بدون حقوق ملكية للفائزين',t:'الشركات الناشئة المبكرة في المملكة',svc:'3 أشهر في الرياض — إرشاد، شبكة مؤسسين',url:'https://blossom.sa/tiktok/',f:true,nw:false,cl:false},
+  {id:80,cat:'global',src:'Microsoft',n:'Microsoft for Startups Founders Hub',fin:'أرصدة Azure حتى 150,000 دولار + أدوات AI',t:'الشركات الناشئة في المراحل المبكرة',svc:'إرشاد تقني من خبراء Microsoft، دعم معماري',url:'https://portal.startups.microsoft.com/signup',f:true,nw:true,cl:false},
+  {id:81,cat:'global',src:'Amazon Web Services',n:'AWS Activate',fin:'Founders: $1K–$5K | Portfolio: $10K–$100K | Gen AI: $200K–$300K',t:'الشركات الناشئة في جميع المراحل',svc:'أرصدة AWS، Amazon Bedrock، إرشاد تقني',url:'https://aws.amazon.com/startups',f:true,nw:true,cl:false},
+];
+
+// ─── UTILITIES ───────────────────────────────────────────────────
+function esc(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+const $  = id => document.getElementById(id);
+const nm = s  => String(s != null ? s : '').trim().toLowerCase();
+
+function setStatus(type, msg) {
+  var dot = $('status-dot'), txt = $('status-msg');
+  if (dot) { dot.className = 'status-dot'; if (type) dot.classList.add(type); }
+  if (txt) txt.textContent = msg;
+}
+function setApiBadge(mode, label) {
+  var el = $('h-api-badge');
+  if (!el) return;
+  el.textContent = label;
+  el.className = 'h-api-badge ' + mode;
+}
+
+// ─── FETCH API ────────────────────────────────────────────────────
+async function fetchAPI() {
+  try {
+    console.log('[KACST] Fetching API...');
+    var res = await fetch(API_URL, { cache: 'no-store', redirect: 'follow' });
+    if (!res.ok) { console.warn('[KACST] HTTP', res.status); return null; }
+    var text = await res.text();
+    var f = text.indexOf('{'), l = text.lastIndexOf('}');
+    if (f < 0 || l <= f) { console.warn('[KACST] No JSON in response'); return null; }
+    var data = JSON.parse(text.substring(f, l + 1));
+    console.log('[KACST] API keys:', Object.keys(data).join(', '));
+    return data;
+  } catch(e) { console.warn('[KACST] API error:', e.message); return null; }
+}
+
+// ─── 1. SETTINGS ─────────────────────────────────────────────────
+function applySettings(raw) {
+  if (!raw) return false;
+  var rows = Array.isArray(raw) ? raw
+    : Object.keys(raw).map(function(k) { return { key: k, value: String(raw[k] != null ? raw[k] : '') }; });
+  if (!rows.length) return false;
+  rows = rows.map(function(r) {
+    var v = String(r.value || '').trim();
+    if (/^[0-9a-fA-F]{3,8}$/.test(v)) v = '#' + v;
+    return { key: r.key, value: v };
+  });
+  applyTheme(rows);
+  console.log('[KACST] settings: ' + rows.length + ' keys');
+  return true;
+}
+
+// ─── 2. KIPS (top stat cards) ─────────────────────────────────────
+// Confirmed API shape: [{ name, value, label, position }]
+//   value    = the big NUMBER  (22, 80+, 3M, 150K)
+//   label    = Arabic TEXT     (جهة داعمة, ...)
+//   position = "top"    -> label ABOVE number (.kpi-funding)
+//              "bottom" -> label BELOW number (normal)
+function applyKips(raw) {
+  if (!raw || !Array.isArray(raw) || !raw.length) return false;
+  raw.forEach(function(r, idx) {
+    var i     = idx + 1;
+    var numEl = $('stat-n' + i);
+    var lblEl = $('stat-l' + i);
+    var card  = numEl ? numEl.closest('.kpi-item') : null;
+    var num   = String(r.value != null ? r.value : '').trim();
+    var lbl   = String(r.label != null ? r.label : '').trim();
+    if (numEl && num) numEl.textContent = num;
+    if (lblEl && lbl) lblEl.textContent = lbl;
+    if (card) {
+      if (r.position === 'top') card.classList.add('kpi-funding');
+      else                      card.classList.remove('kpi-funding');
+    }
+  });
+  console.log('[KACST] kips: ' + raw.length + ' stat cards');
+  return true;
+}
+
+// ─── 3. ABOUT ────────────────────────────────────────────────────
+function applyAbout(raw) {
+  if (!raw) return false;
+  var base = Array.isArray(raw) ? raw
+    : Object.keys(raw).map(function(k) { return { key: k, value: String(raw[k] != null ? raw[k] : '') }; });
+  if (!base.length) return false;
+
+  // Expand obj1 <-> obj_1 aliases
+  var rows = [];
+  base.forEach(function(r) {
+    rows.push(r);
+    var k = String(r.key || '').trim();
+    var m1 = k.match(/^obj(\d+)$/i);
+    if (m1) rows.push({ key: 'obj_' + m1[1], value: r.value, value2: r.value2 || '' });
+    var m2 = k.match(/^obj_(\d+)$/i);
+    if (m2) rows.push({ key: 'obj' + m2[1],  value: r.value, value2: r.value2 || '' });
+  });
+
+  renderAbout(rows);
+  console.log('[KACST] about: ' + base.length + ' fields');
+  return true;
+}
+
+// ─── 4. KPIS (performance cards) ─────────────────────────────────
+function applyKpis(raw) {
+  if (!raw) return false;
+  var rows = Array.isArray(raw) ? raw
+    : Object.keys(raw).map(function(k) { return { name: k, current: String(raw[k]), target: '—' }; });
+  if (!rows.length) return false;
+  renderKPIs(rows);
+  console.log('[KACST] kpis: ' + rows.length + ' indicators');
+  return true;
+}
+
+// ─── 5. PROGRAMS ─────────────────────────────────────────────────
+function applyPrograms(raw) {
+  if (!raw || !Array.isArray(raw) || !raw.length) return false;
+  var n = raw.map(function(r, i) {
+    return {
+      id:               r.id   || r.ID   || i + 1,
+      cat:              r.cat  || r.category || r.CAT || '',
+      src:              r.src  || r.source   || r.entity    || r['\u0627\u0644\u062c\u0647\u0629'] || '',
+      name:             r.name || r.Name     || r.program_name || r['\u0627\u0644\u0627\u0633\u0645'] || '',
+      financial_support: r.financial_support || r.financialSupport || r.fin || r.funding || r['\u0627\u0644\u062f\u0639\u0645 \u0627\u0644\u0645\u0627\u0644\u064a'] || '',
+      target:            r.target   || r.target_audience    || r['\u0627\u0644\u0641\u0626\u0629 \u0627\u0644\u0645\u0633\u062a\u0647\u062f\u0641\u0629'] || '',
+      services:          r.services || r.service            || r['\u0627\u0644\u062e\u062f\u0645\u0627\u062a'] || '',
+      url:               r.url || r.link || r.website || '#',
+      hasFinancial:      r.hasFinancial || r.hasfinancial || r.has_financial || r.f || false,
+      isNew:             r.isNew  || r.isnew   || r.is_new   || r.nw || false,
+      isClosed:          r.isClosed || r.isclosed || r.is_closed || r.cl || false,
+    };
+  });
+  var parsed = parsePrograms(n);
+  if (!parsed.length) { console.warn('[KACST] programs: 0 valid'); return false; }
+  PROGRAMS = parsed;
+  updateBadges();
+  console.log('[KACST] programs: ' + PROGRAMS.length);
+  var wrap = $('prog-wrap');
+  if (wrap && wrap.style.display === 'block' && _uiActiveCat) {
+    var q = ($('prog-search') || {}).value || '';
+    if (q.trim()) filterProgs(); else _origShowProg(_uiActiveCat, _uiActiveLabel);
+  }
+  return true;
+}
+
+// ─── APPLY THEME ─────────────────────────────────────────────────
+function applyTheme(rows) {
+  if (!rows || !rows.length) return;
+  var cfg = {};
+  rows.forEach(function(r) { if (r.key) cfg[nm(r.key)] = String(r.value || ''); });
+  var root = document.documentElement;
+  function sv(cssVar, keys) {
+    for (var i = 0; i < keys.length; i++) {
+      var v = cfg[keys[i]];
+      if (v) { root.style.setProperty(cssVar, v); return; }
+    }
+  }
+  sv('--primary',     ['primary_color',    'primary']);
+  sv('--secondary',   ['secondary_color',  'secondary']);
+  sv('--accent',      ['accent_color',     'accent']);
+  sv('--bg',          ['background_color', 'bg', 'background']);
+  sv('--text',        ['text_color',       'text']);
+  sv('--card-radius', ['card_radius',      'radius', 'border_radius']);
+  var font = cfg['font_family'] || cfg['font'] || '';
+  if (font) {
+    root.style.setProperty('--font', "'" + font + "', system-ui, sans-serif");
+    var lnk = $('gfonts-link');
+    if (lnk) lnk.href = 'https://fonts.googleapis.com/css2?family=' + font.replace(/\s+/g,'+') + ':wght@400;500;700&display=swap';
+  }
+  if (cfg['logo_url']) { var img = $('kacst-logo'); if (img) img.src = cfg['logo_url']; }
+}
+
+// ─── RENDER KPIs ─────────────────────────────────────────────────
+function renderKPIs(rows) {
+  if (!rows || !rows.length) return;
+  var wrap = $('kpi-indicators');
+  if (!wrap) return;
+  var badges  = ['b1','b2','b3','b4'];
+  var targets = ['target-b1','target-b2','target-b3','target-b4'];
+  var valid = rows.slice(0,4).filter(function(r) { return r.name || r.kpi_name || r.label || r.kpi; });
+  if (!valid.length) return;
+  wrap.innerHTML = valid.map(function(r, idx) {
+    var pad = (idx+1 < 10 ? '0' : '') + (idx+1);
+    var lbl = esc(String(r.name || r.kpi_name || r.label || r.kpi || '').trim());
+    var cur = esc(String(r.current || r.cur || r.value || r.actual || '—').trim());
+    var tgt = esc(String(r.target  || r.tgt || r.goal  || r.planned || '—').trim());
+    return '<div class="kpi-card">'
+      + '<div class="kpi-badge ' + badges[idx] + '">' + pad + '</div>'
+      + '<div class="kpi-lbl">' + lbl + '</div>'
+      + '<div class="kpi-vals">'
+      + '<div class="val-box current"><div class="vn">' + cur + '</div><div class="vl">الحالي</div></div>'
+      + '<div class="val-box ' + targets[idx] + '"><div class="vn">' + tgt + '</div><div class="vl">المستهدف</div></div>'
+      + '</div></div>';
+  }).join('');
+}
+
+// ─── RENDER ABOUT ────────────────────────────────────────────────
+function renderAbout(rows) {
+  if (!rows || !rows.length) return;
+  var cfg = {};
+  rows.forEach(function(r) { if (r.key) cfg[nm(r.key)] = r; });
+  function get(k)  { return cfg[k] ? String(cfg[k].value  != null ? cfg[k].value  : '') : ''; }
+  function get2(k) { return cfg[k] ? String(cfg[k].value2 != null ? cfg[k].value2 : '') : ''; }
+
+  var nabtha = get('nabtha_text') || get('nabtha') || get('description') || get('about');
+  if (nabtha) {
+    var el = $('nabtha-box');
+    if (el) {
+      var paras = nabtha.split(/\n+/).filter(Boolean);
+      el.innerHTML = (paras.length ? paras : [nabtha]).map(function(p) { return '<p>' + esc(p) + '</p>'; }).join('');
+    }
+  }
+
+  var og = $('objectives-grid');
+  if (og) {
+    var colors = ['c1','c2','c3','c4','c5','c6'], objs = [];
+    for (var i = 1; i <= 6; i++) {
+      var t = get('obj' + i) || get('obj_' + i);
+      if (t) objs.push({ n:i, t:t, c:colors[i-1] });
+    }
+    if (objs.length) {
+      og.innerHTML = objs.map(function(o) {
+        return '<div class="obj-card"><div class="obj-num ' + o.c + '">' + o.n + '</div>'
+          + '<div class="obj-text">' + esc(o.t) + '</div></div>';
+      }).join('');
+    }
+  }
+
+  var ht = get('header_title') || get('initiative_name') || get('title');
+  if (ht) { var el2 = $('h-initiative'); if (el2) el2.textContent = ht; }
+
+  var hd = get('header_dept') || get('dept');
+  var he = get('header_email') || get('email');
+  var hdel = $('h-dept');
+  if (hdel) {
+    var base = hd || hdel.textContent.split('·')[0].trim();
+    if (he) {
+      hdel.innerHTML = esc(base) + ' · <a href="mailto:' + esc(he)
+        + '" style="color:rgba(255,255,255,0.6);text-decoration:none;">' + esc(he) + '</a>';
+    } else if (hd) {
+      hdel.textContent = hd;
+    }
+  }
+
+  var hu = get('header_update') || get('last_update');
+  if (hu) { var el3 = $('h-meta'); if (el3) el3.textContent = 'آخر تحديث: ' + hu; }
+}
+
+// ─── PARSE PROGRAMS ──────────────────────────────────────────────
+function parsePrograms(rows) {
+  function toBool(x) {
+    if (x === true || x === 1) return true;
+    if (x === false || x === 0) return false;
+    return /^(true|1|yes)$/i.test(String(x != null ? x : '').trim());
+  }
+  return rows.map(function(r) {
+    return {
+      id:  +(r.id  || 0),
+      cat: String(r.cat  || r.category || '').trim(),
+      src: String(r.src  || r.source || r.entity || '').trim(),
+      n:   String(r.name || r.n || r.program_name || '').trim(),
+      fin: String(r.financial_support || r.fin || r.funding || '').trim(),
+      t:   String(r.target || r.t || r.target_audience || '').trim(),
+      svc: String(r.services || r.svc || r.service || '').trim(),
+      url: String(r.url || r.link || r.website || '#').trim(),
+      f:   toBool(r.hasfinancial || r.has_financial || r.hasFinancial || r.f),
+      nw:  toBool(r.isnew        || r.is_new        || r.isNew        || r.nw),
+      cl:  toBool(r.isclosed     || r.is_closed      || r.isClosed     || r.cl),
+    };
+  }).filter(function(p) { return p.id > 0 && p.cat; });
+}
+
+function renderPrograms(rows) {
+  if (!rows || !rows.length) return;
+  var parsed = parsePrograms(rows);
+  if (!parsed.length) return;
+  PROGRAMS = parsed;
+  updateBadges();
+}
+
+// ─── UPDATE BADGE COUNTS ─────────────────────────────────────────
+function updateBadges() {
+  var catMap = {
+    universities:'badge-universities', nonprofit:'badge-nonprofit',
+    private:'badge-private', health:'badge-health', global:'badge-global',
+  };
+  Object.keys(catMap).forEach(function(cat) {
+    var el = $(catMap[cat]);
+    if (el) el.textContent = PROGRAMS.filter(function(p) { return p.cat === cat; }).length + ' برامج';
+  });
+  var govCats = ['ntdp','industry','smebank','municipalities','modon','monshaat','exports','tourism','sdb'];
+  var govCount = new Set(PROGRAMS.filter(function(p) { return govCats.indexOf(p.cat) !== -1; }).map(function(p) { return p.cat; })).size;
+  var gb = $('gov-badge');
+  if (gb) gb.textContent = govCount + ' جهات';
+}
+
+// ─── MAIN REFRESH ────────────────────────────────────────────────
+async function refreshAll() {
+  var btn  = $('btn-update'), icon = $('btn-icon'), txt = $('btn-text');
+  if (btn)  btn.classList.add('loading');
+  if (icon) icon.innerHTML = '<span class="spin">↻</span>';
+  if (txt)  txt.textContent = 'جارٍ التحديث…';
+  setStatus('', 'جارٍ الاتصال…');
+  var now = new Date().toLocaleString('ar-SA', { hour:'2-digit', minute:'2-digit' });
+
+  try {
+    var data = await fetchAPI();
+
+    if (data) {
+      var live = 0;
+      if (applySettings(data.settings || data.sittings || null)) live++;
+      if (applyKips(data.kips || null))                          live++;
+      if (applyAbout(data.about || null))                        live++;
+      if (applyKpis(data.kpis  || null))                         live++;
+      if (applyPrograms(data.programs || null))                  live++;
+
+      if (live > 0) {
+        setApiBadge('api-live', 'مباشر');
+        setStatus('live', 'بيانات حية — ' + live + ' أقسام — ' + now);
+        var hm = $('h-meta');
+        if (hm && hm.textContent.indexOf('جارٍ') !== -1)
+          hm.textContent = 'آخر تحديث: ' + new Date().toLocaleDateString('ar-SA');
+        return;
+      }
+    }
+
+    setApiBadge('api-err', 'بيانات احتياطية');
+    setStatus('fallback', 'تعذّر الاتصال — يتم عرض البيانات الاحتياطية');
+
+  } catch(e) {
+    console.error('[KACST] refreshAll error:', e);
+    setApiBadge('api-err', 'خطأ');
+    setStatus('error', 'خطأ: ' + e.message);
+  } finally {
+    if (btn)  btn.classList.remove('loading');
+    if (icon) icon.textContent = '↻';
+    if (txt)  txt.textContent  = 'تحديث البيانات';
+  }
+}
+
+// ─── TABS ─────────────────────────────────────────────────────────
+function switchTab(tab) {
+  ['about','programs'].forEach(function(name) {
+    var panel = $('tab-' + name), btn = $('tab-btn-' + name);
+    if (panel) {
+      panel.style.display = (name === tab) ? 'block' : 'none';
+      panel.classList.toggle('active', name === tab);
+    }
+    if (btn) btn.classList.toggle('active', name === tab);
+  });
+}
+
+// ─── ENTITY NAVIGATION ───────────────────────────────────────────
+function toggleGov(el) {
+  govOpen = !govOpen;
+  var gs = $('gov-sub');
+  if (gs) gs.classList.toggle('show', govOpen);
+  el.classList.toggle('gov-open', govOpen);
+  if (!govOpen) {
+    document.querySelectorAll('.sub-btn').forEach(function(b) { b.classList.remove('active'); });
+    hideProg();
+  }
+}
+function selectGov(cat, label, btn) {
+  document.querySelectorAll('.sub-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  showProg(cat, label);
+}
+function selectCat(cat, label, el) {
+  govOpen = false;
+  var gs = $('gov-sub'); if (gs) gs.classList.remove('show');
+  var gc = $('gov-card'); if (gc) gc.classList.remove('gov-open');
+  document.querySelectorAll('.sub-btn').forEach(function(b)     { b.classList.remove('active'); });
+  document.querySelectorAll('.entity-card').forEach(function(c) { c.classList.remove('active'); });
+  el.classList.add('active');
+  showProg(cat, label);
+}
+
+// ─── PROGRAM DISPLAY ─────────────────────────────────────────────
+var _uiActiveCat = '', _uiActiveLabel = '';
+var _origShowProg;
+
+function showProg(cat, label) {
+  var list = PROGRAMS.filter(function(p) { return p.cat === cat; });
+  closeDet();
+  var wrap = $('prog-wrap');
+  if (wrap) wrap.style.display = 'block';
+  var pt = $('prog-title'); if (pt) pt.textContent = 'برامج ' + label;
+  var pc = $('prog-count'); if (pc) pc.textContent = list.length + ' برنامج';
+  var progs = $('progs');
+  if (progs) progs.innerHTML = list.map(function(p) {
+    var cls = p.cl ? ' cl' : p.nw ? ' nw' : '';
+    return '<div class="pc' + cls + '">'
+      + '<div class="pc-stripe"></div>'
+      + '<div class="pc-top"><div class="psrc">' + esc(p.src) + '</div>'
+      + '<a class="plink" href="' + esc(p.url) + '" target="_blank" rel="noopener">زيارة الموقع ↗</a></div>'
+      + '<div class="pname" onclick="showDet(' + p.id + ')">' + esc(p.n) + '</div>'
+      + '<div class="ptags">'
+      + (p.cl ? '<span class="tag tc">مغلق</span>'     : '')
+      + (p.nw ? '<span class="tag tnw">جديد</span>'    : '')
+      + (p.f  ? '<span class="tag tf">دعم مالي</span>' : '<span class="tag tn">خدمات</span>')
+      + '</div></div>';
+  }).join('');
+  if (wrap) wrap.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+_origShowProg = showProg;
+showProg = function(cat, label) {
+  _uiActiveCat = cat; _uiActiveLabel = label;
+  var inp = $('prog-search');
+  if (inp) { inp.value = ''; inp.classList.add('visible'); }
+  _origShowProg(cat, label);
+};
+
+function hideProg() {
+  var w = $('prog-wrap'); if (w) w.style.display = 'none';
+  closeDet();
+}
+
+function filterProgs() {
+  var q     = ($('prog-search') || {value:''}).value.trim().toLowerCase();
+  var progs = $('progs'), count = $('prog-count');
+  if (!progs || !_uiActiveCat) return;
+  var full = PROGRAMS.filter(function(p) { return p.cat === _uiActiveCat; });
+  var list = q ? full.filter(function(p) {
+    return [p.n,p.src,p.fin,p.t,p.svc].join(' ').toLowerCase().indexOf(q) !== -1;
+  }) : full;
+  if (count) count.textContent = list.length + ' برنامج' + (q ? ' — نتائج البحث' : '');
+  if (!list.length) {
+    progs.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:32px;color:var(--text-muted);font-size:12px">لا توجد نتائج لـ "<strong>' + esc(q) + '</strong>"</div>';
+    closeDet(); return;
+  }
+  progs.innerHTML = list.map(function(p) {
+    var cls = p.cl ? ' cl' : p.nw ? ' nw' : '';
+    return '<div class="pc' + cls + '">'
+      + '<div class="pc-stripe"></div>'
+      + '<div class="pc-top"><div class="psrc">' + esc(p.src) + '</div>'
+      + '<a class="plink" href="' + esc(p.url) + '" target="_blank" rel="noopener">زيارة الموقع ↗</a></div>'
+      + '<div class="pname" onclick="showDet(' + p.id + ')">' + esc(p.n) + '</div>'
+      + '<div class="ptags">'
+      + (p.cl ? '<span class="tag tc">مغلق</span>'     : '')
+      + (p.nw ? '<span class="tag tnw">جديد</span>'    : '')
+      + (p.f  ? '<span class="tag tf">دعم مالي</span>' : '<span class="tag tn">خدمات</span>')
+      + '</div></div>';
+  }).join('');
+  closeDet();
+}
+
+function showDet(id) {
+  var p = PROGRAMS.find(function(x) { return x.id === id; });
+  if (!p) return;
+  $('d-name').textContent = p.n + (p.cl ? ' — مغلق حالياً' : '');
+  $('d-link').href        = /^https?:\/\//i.test(p.url) ? p.url : '#';
+  $('d-src').textContent  = p.src;
+  $('d-tgt').textContent  = p.t;
+  $('d-fin').textContent  = p.fin;
+  $('d-svc').textContent  = p.svc;
+  var det = $('det');
+  if (det) { det.classList.add('show'); det.scrollIntoView({ behavior:'smooth', block:'nearest' }); }
+}
+function closeDet() { var d = $('det'); if (d) d.classList.remove('show'); }
+
+// ─── INIT ─────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', function () {
+  PROGRAMS = P_FALLBACK.slice();
+  updateBadges();
+  switchTab('programs');
+  refreshAll();
+});
+</script>
+</body>
+</html>
